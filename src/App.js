@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Statistics from './components/Statistics';
 import FeedbackOptions from './components/FeedbackOptions';
 import Section from './components/Section';
@@ -30,15 +29,11 @@ class App extends Component {
     return ~~positive;
   };
 
-  show = () => {
-    this.setState({ visible: true });
-  };
-
   render() {
     const { good, neutral, bad } = this.state;
 
     return (
-      <div className="App">
+      <>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
@@ -55,10 +50,10 @@ class App extends Component {
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
-            <Notification message="There is no feedback" />
+            <Notification message="There is no feedback." />
           )}
         </Section>
-      </div>
+      </>
     );
   }
 }
